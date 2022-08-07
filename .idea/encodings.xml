@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/src/controller/ColorPicker.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/gui/Main.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/io/Example.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/commons-compress-1.9.jar" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/lib/commons-io-2.4.jar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/commons-lang3-3.3.2.jar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/guava-17.0.jar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/controller/ColorPicker.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/controller/ColorPlate.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/controller/DecompilerGui.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/controller/ProgressPane.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/gui/Main.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/io/DecompilerTest.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/io/Example.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/io/JsonUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/io/PackDecompiler.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/io/ResourceIndex.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/io/jsontest.java" charset="UTF-8" />
     <file url="PROJECT" charset="GBK" />
   </component>
 </project>

@@ -1,251 +1,227 @@
 package io;
 
+import com.google.gson.stream.JsonReader;
+import org.apache.commons.io.FileUtils;
+
 import java.io.*;
 import java.nio.channels.FileChannel;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-
 public class PackDecompiler {
-    private static HashMap<String, String> fileMap = new HashMap<>();
-    private static JsonReader jsonReader;
-    private static String hash;
-    private static String path;
-    private static String putPath;
-    private static boolean readHash = false;
-    private static int progress = 0;
-    private static int indexLength = 0;
-    private static int readLength = 0;
-    private static File minecraftPath;
-    private static String version;
+    private HashMap<String, String> fileMap = new HashMap<>();
+    private String putPath;
+    private int progress = 0;
+    private int indexLength = 0;
+    private int readLength = 0;
+    private File minecraftPath;
+    private String version;
+    public int over1 = 0;
+    public boolean over2 = false;
+    private boolean stop = false;
+    public boolean reachException = false;
+    private final List<Thread> threads = new ArrayList<>();
+
+    public List<Thread> getThreads() {
+        return threads;
+    }
 
     public int getProgress() {
         return progress;
     }
 
-    public void decompile(File minecraftPath, String version, String putPath) {
-        // TODO ◊‘∂Ø…˙≥…µƒππ‘Ï∫Ø ˝¥Ê∏˘
+    public boolean isReachException() {
+        return reachException;
+    }
+
+    private void reachException() {
+        reachException = true;
+        stop = true;
+    }
+
+    public PackDecompiler(File minecraftPath, String version, String putPath) {
         try {
-            String regVersion = "(\\d)+\\.+(\\d)+(\\.+(\\d))?";//x.x.x–Œ Ω
+            String regVersion = "(\\d)+\\.+(\\d)+(\\.+(\\d))?";//x.x.x???
             if (version.matches(regVersion)) {
                 System.out.println("Version pass:" + "\"" + version + "\"");
                 if (minecraftPath.isDirectory()) {
-                    PackDecompiler.minecraftPath=minecraftPath;
-                    PackDecompiler.version=version;
-                    PackDecompiler.putPath =putPath;
+                    this.minecraftPath = minecraftPath;
+                    this.version = version;
+                    this.putPath = putPath;
                     System.out.println("Path pass:" + "\"" + minecraftPath.getAbsolutePath() + "\"");
                     String[] jsonVersion = version.split("\\.");
                     File indexJson = new File(minecraftPath.getAbsolutePath() + "\\assets\\indexes\\" + jsonVersion[0] + "." + jsonVersion[1] + ".json");
 
                     FileInputStream fin = new FileInputStream(indexJson);
                     InputStreamReader json = new InputStreamReader(fin);
-                    jsonReader = new JsonReader(json);
-                    System.out.println("Start decompile");
-
-                    JarThread jarThread = new JarThread();
-                    HashThread hashThread = new HashThread();
-
-                    jarThread.start();
-                    hashThread.start();
-
-                    //System.out.println("Over");
+                    new JsonReader(json);
                 }
             }
-
         } catch (Exception e) {
-            // TODO: handle exception
+            reachException();
             e.printStackTrace();
+            return;
         }
-
-
     }
 
-    private class JarThread extends Thread{
+    public void cancel() {
+        progress = 0;
+        System.out.println("canceled");
+    }
+
+    public void start() {
+        JarThread jarThread = new JarThread();
+        HashThread hashThread = new HashThread();
+        threads.add(jarThread);
+        threads.add(hashThread);
+        jarThread.start();
+        hashThread.start();
+    }
+
+    public boolean isOver() {
+        return (over1==5) && over2;
+    }
+
+    private class JarThread extends Thread {
         @Override
-        public void run(){
+        public void run() {
             System.out.println("Unzip Minecraft jar");
             try {
-                zipUncompress(minecraftPath.getAbsolutePath()+"\\versions\\"+version+"\\"+version+".jar",putPath);
-                System.out.println("Jar over");
+                for (int i=0;i<5;i++){
+                    new Thread(()->{
+                        try {
+                            zipUncompress(minecraftPath.getAbsolutePath() + "\\versions\\" + version + "\\" + version + ".jar", putPath);
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                    }).start();
+                }
             } catch (Exception e) {
+                reachException();
                 e.printStackTrace();
+                return;
             }
         }
     }
 
-    private class HashThread extends Thread{
+    private class HashThread extends Thread {
         @Override
-        public void run(){
+        public void run() {
             try {
-                handleJsonObject(jsonReader);
-                File objects=new File(minecraftPath.getAbsolutePath()+"\\assets\\objects");
+                fileMap = (HashMap<String, String>) new ResourceIndex(new File("U:\\game\\MinecraftÂõΩÈôÖÁâà\\.minecraft\\assets"), "1.8").getResourceMap();//Use Minecraft's code from Mojang to prevent bugs :(
+                indexLength = fileMap.size();
+                File objects = new File(minecraftPath.getAbsolutePath() + "\\assets\\objects");
                 System.out.println("Read information done");
 
                 indexLength = fileMap.size();
-                System.out.println("size:"+indexLength);
+                System.out.println("size:" + indexLength);
                 filesDirs(objects);
+                over2 = true;
                 System.out.println("Hash over");
-            } catch (IOException e) {
+            } catch (Exception e) {
+                reachException();
                 e.printStackTrace();
+                return;
             }
         }
     }
 
-    public void filesDirs(File file){
-        if(file!=null){
-
-
-            if(file.isDirectory()){
-                File[] files=file.listFiles();
+    public void filesDirs(File file) {
+        if (file != null) {
+            if (file.isDirectory()) {
+                File[] files = file.listFiles();
                 assert files != null;
-                for (File flies2:files) {
+                for (File flies2 : files) {
                     filesDirs(flies2);
                 }
-            }else{
-
-                //System.out.println("Œƒº˛√˚◊÷"+file);
+            } else {
+                //System.out.println("???????"+file);
                 try {
                     //System.out.println(fileMap.get(file.getName()));
-                    if (fileMap.get(file.getName())!=null){
+                    if (fileMap.get(file.getName()) != null) {
                         readLength++;
-                        progress = readLength*100/indexLength;
+                        progress = readLength * 100 / indexLength;
 
-                        File put = new File(putPath+"\\"+fileMap.get(file.getName()));
+                        File put = new File(putPath + "\\" + fileMap.get(file.getName()).replace(':', '\\'));
                         put.getParentFile().mkdirs();
-                        copyFile(file,put);
+                        FileUtils.copyFile(file, put);
+                        //copyFile(file,put);
                     }
                 } catch (IOException e) {
+                    reachException();
                     e.printStackTrace();
+                    return;
                 }
             }
-        }else{
-            System.out.println("Œƒº˛≤ª¥Ê‘⁄");
+        } else {
+            System.out.println("ÂèçÊ∑∑Ê∑ÜassetsÂÆåÊàê");
         }
     }
 
-    public void copyFile(File source, File targetFile) throws IOException {
+    private void copyFile(File source, File targetFile) throws IOException {
         try (FileChannel inputChannel = new FileInputStream(source).getChannel(); FileChannel outputChannel = new FileOutputStream(targetFile).getChannel()) {
             outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
-        }
-    }
-
-    private void handleJsonObject(JsonReader reader) throws IOException {
-        reader.beginObject();
-        String name;
-
-        while (reader.hasNext()) {
-            JsonToken token = reader.peek();
-
-            if (token.equals(JsonToken.BEGIN_ARRAY)) {
-                handleJsonArray(reader);
-            } else if (token.equals(JsonToken.NAME)) {
-                name = reader.nextName();
-                eqaqlsName(name);
-            } else if (token.equals(JsonToken.STRING)) {
-                // get the current token
-                String information = reader.nextString();
-                if (readHash){
-                    hash = information;
-                    path = reader.getPath();
-                    path = path.replace(".hash","");
-                    path = path.replace(".size","");
-                    path = path.replace("/","\\");
-                    String[] temp= path.split("\\.",3);
-                    path = temp[2];
-                    //System.out.println(path);
-                    fileMap.put(hash,path);
-                }
-            } else if (token.equals(JsonToken.NUMBER)) {
-                reader.nextInt();
-            } else if (token.equals(JsonToken.BEGIN_OBJECT)) {
-                handleJsonArray(reader);
-            }
-        }
-    }
-
-    private void handleJsonArray(JsonReader reader) throws IOException {
-        reader.beginObject();
-        while (true) {
-            JsonToken token = reader.peek();
-            if (token.equals(JsonToken.END_ARRAY)) {
-                reader.endArray();
-                break;
-            } else if (token.equals(JsonToken.BEGIN_OBJECT)) {
-                handleJsonObject(reader);
-            } else if (token.equals(JsonToken.END_OBJECT)) {
-                reader.endObject();
-            } else if (token.equals(JsonToken.NAME)) {
-                String name = reader.nextName();
-                eqaqlsName(name);
-            } else {
-                break;
-            }
-        }
-    }
-    // ∏¸∂‡«Î‘ƒ∂¡£∫https://www.yiibai.com/gson/gson_streaming.html
-
-    private void eqaqlsName(String name) {
-        switch (name) {
-            case "hash":
-                readHash = true;
-                break;
-            case "size":
-            	readHash = false;
-                break;
-            default:
-                path=name;
-                break;
+        } catch (Exception e) {
+            reachException();
+            e.printStackTrace();
+            return;
         }
     }
 
     public void zipUncompress(String inputFile, String destDirPath) throws Exception {
-        File srcFile = new File(inputFile);//ªÒ»°µ±«∞—πÀıŒƒº˛
-        // ≈–∂œ‘¥Œƒº˛ «∑Ò¥Ê‘⁄
+        File srcFile = new File(inputFile);//????????????
+        // ?–∂???????????
         if (!srcFile.exists()) {
-            throw new Exception(srcFile.getPath() + "À˘÷∏Œƒº˛≤ª¥Ê‘⁄");
+            throw new Exception(srcFile.getPath() + ":Êñá‰ª∂‰∏çÂ≠òÂú®");
         }
         //System.out.println("Start unzip jar");
-        ZipFile zipFile = new ZipFile(srcFile);//¥¥Ω®—πÀıŒƒº˛∂‘œÛ
-        //ø™ ºΩ‚—π
+        ZipFile zipFile;
+        try {
+            zipFile = new ZipFile(srcFile);//??????????????
+        } catch (Exception e) {
+            reachException();
+            e.printStackTrace();
+            return;
+        }
+        //??????
         Enumeration<?> entries = zipFile.entries();
         while (entries.hasMoreElements()) {
             ZipEntry entry = (ZipEntry) entries.nextElement();
             //System.out.println(entry+"size:"+entry.getSize());
-            if (entry.isDirectory()){
+            if (entry.isDirectory()) {
                 System.out.println(entry);
             }
-            if (entry.getName().startsWith("assets")){
+            if (entry.getName().startsWith("assets")) {
                 //System.out.println(entry);
-                // »Áπ˚ «Œƒº˛º–£¨æÕ¥¥Ω®∏ˆŒƒº˛º–
-                if (entry.isDirectory()) {
-                    //srcFile.mkdirs();
-                } else {
-                    // »Áπ˚ «Œƒº˛£¨æÕœ»¥¥Ω®“ª∏ˆŒƒº˛£¨»ª∫Û”√io¡˜∞—ƒ⁄»›copyπ˝»•
-                    String path = entry.getName().replace("assets/","");
-                    path = path.replace("/","\\");
-                    File targetFile = new File(destDirPath+"\\"+path);
-                    // ±£÷§’‚∏ˆŒƒº˛µƒ∏∏Œƒº˛º–±ÿ–Î“™¥Ê‘⁄
+                if (!entry.isDirectory()) {
+                    String path = entry.getName().replace("assets/", "");
+                    path = path.replace("/", "\\");
+                    File targetFile = new File(destDirPath + "\\" + path);
                     if (!targetFile.getParentFile().exists()) {
                         targetFile.getParentFile().mkdirs();
                     }
-                    targetFile.createNewFile();
-                    // Ω´—πÀıŒƒº˛ƒ⁄»›–¥»ÎµΩ’‚∏ˆŒƒº˛÷–
-                    InputStream is = zipFile.getInputStream(entry);
-                    FileOutputStream fos = new FileOutputStream(targetFile);
-                    int len;
-                    byte[] buf = new byte[1024];
-                    while ((len = is.read(buf)) != -1) {
-                        fos.write(buf, 0, len);
+                    if (!targetFile.exists()){
+                        targetFile.createNewFile();
+                        InputStream is = zipFile.getInputStream(entry);
+                        FileOutputStream fos = new FileOutputStream(targetFile);
+                        int len;
+                        byte[] buf = new byte[4096];
+                        while ((len = is.read(buf)) != -1) {
+                            fos.write(buf, 0, len);
+                        }
+                        fos.close();
+                        is.close();
                     }
-                    fos.close();
-                    is.close();
+
                 }
+
             }
         }
+        over1+=1;
     }
 
 }

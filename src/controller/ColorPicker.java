@@ -59,7 +59,7 @@ public class ColorPicker extends GridPane{
 	@FXML
 	private Polygon colorShow1;
 	*/
-	public ColorPicker() throws Exception{//¹¹Ôìº¯Êı
+	public ColorPicker() throws Exception{//æ„é€ å‡½æ•°
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("resource/ColorPicker.fxml"));
 		loader.setController(this);
 		loader.setRoot(this);
@@ -129,7 +129,7 @@ public class ColorPicker extends GridPane{
 
 	@FXML
 	public void basicColorChange(MouseEvent e) {
-		double ro = colorPane.getRotate();// ¶ÈÊı
+		double ro = colorPane.getRotate();// åº¦æ•°
 		// colorPointer.setCursor(Cursor.CLOSED_HAND);
 		if (e == null) {
 		} else {
@@ -148,7 +148,7 @@ public class ColorPicker extends GridPane{
 		int g = 0;
 		// if (ro==180) ro=-180;
 
-		ro = -ro;// ¾ÀÕı×óÓÒ¾µÏñ
+		ro = -ro;// çº æ­£å·¦å³é•œåƒ
 		int ch = Math.abs((int) Math.pow(-1, (int) ro / 360));
 		ro = ch * ro - ch * 360 * ((int) ro / 360);
 		if (0 < ro & ro <= 60) {
@@ -274,13 +274,13 @@ public class ColorPicker extends GridPane{
 	@FXML
 	public void dotSet(MouseEvent e) {
 		colorTop.setCursor(javafx.scene.Cursor.NONE);
-		double ex = e.getX();// Êó±êXÎ»ÖÃ
-		double ey = e.getY();// Êó±êYÎ»ÖÃ
+		double ex = e.getX();// é¼ æ ‡Xä½ç½®
+		double ey = e.getY();// é¼ æ ‡Yä½ç½®
 		double a = colorTop.getWidth();
-		boolean top = false;// ´¥Åöµ½ÉÏ
-		boolean bottom = false;// ´¥Åöµ½µ×
-		boolean left = false;// ´¥Åöµ½×ó
-		boolean right = false;// ´¥Åöµ½ÓÒ
+		boolean top = false;// è§¦ç¢°åˆ°ä¸Š
+		boolean bottom = false;// è§¦ç¢°åˆ°åº•
+		boolean left = false;// è§¦ç¢°åˆ°å·¦
+		boolean right = false;// è§¦ç¢°åˆ°å³
 		double border = 0.5;
 		double addx = 0.5;
 		double addy = 0.5;
@@ -305,7 +305,7 @@ public class ColorPicker extends GridPane{
 			dotY(a - border);
 			bottom = true;
 		}
-		// ÕâÊÇÒ»¶ÎºÜÓĞÒâË¼µÄ²âÊÔ´úÂë£¬²»ÓÃ¹ÜËü
+		// è¿™æ˜¯ä¸€æ®µå¾ˆæœ‰æ„æ€çš„æµ‹è¯•ä»£ç ï¼Œä¸ç”¨ç®¡å®ƒ
 		/*
 		 * System.out.println("  -----"+top+"-----");
 		 * System.out.println("  |             |");

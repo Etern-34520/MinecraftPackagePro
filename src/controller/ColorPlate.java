@@ -20,7 +20,7 @@ public ToggleGroup color;
 	}
 	
 	public void colorSet(int r, int g, int b, double a) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 			double o =Math.round(a * 1000 / 100) / 1000.0;
 			boolean same = false;
 			ToggleButton selectedBotton = (ToggleButton) color.getSelectedToggle();
@@ -34,8 +34,8 @@ public ToggleGroup color;
 					*/
 					if (length > 25) {
 						String rgba = style.substring(25, length - 1);
-						String delimeter = ","; // Ö¸¶¨·Ö¸î×Ö·û
-						String[] temp = rgba.split(delimeter); // ·Ö¸î×Ö·û´®
+						String delimeter = ","; // æŒ‡å®šåˆ†å‰²å­—ç¬¦
+						String[] temp = rgba.split(delimeter); // åˆ†å‰²å­—ç¬¦ä¸²
 						int r1 = Integer.parseInt(temp[0]);
 						int g1 = Integer.parseInt(temp[1]);
 						int b1 = Integer.parseInt(temp[2]);
@@ -60,8 +60,8 @@ public ToggleGroup color;
 			int length = style.length();
 			if (length > 25) {
 				String rgba = style.substring(25, length - 1);
-				String delimeter = ","; // Ö¸¶¨·Ö¸î×Ö·û
-				String[] temp = rgba.split(delimeter); // ·Ö¸î×Ö·û´®
+				String delimeter = ","; // æŒ‡å®šåˆ†å‰²å­—ç¬¦
+				String[] temp = rgba.split(delimeter); // åˆ†å‰²å­—ç¬¦ä¸²
 				int r = Integer.parseInt(temp[0]);
 				int g = Integer.parseInt(temp[1]);
 				int b = Integer.parseInt(temp[2]);

@@ -70,7 +70,31 @@ public class PackDecompiler {
 
     public void cancel() {
         progress = 0;
+        List<Thread> threads = this.getThreads();
+        for (int i = 0; i < threads.size(); i++) {
+            threads.get(i).stop();
+        }
         System.out.println("canceled");
+    }
+    public void pause(){
+        List<Thread> threads = this.getThreads();
+        for (int i = 0; i < threads.size(); i++) {
+            if (threads.get(i).isAlive()){
+                synchronized (this){
+                    threads.get(i).suspend();
+                }
+            }
+        }
+    }
+    public void reStart() {
+        List<Thread> threads = this.getThreads();
+        for (int i = 0; i < threads.size(); i++) {
+            if (threads.get(i).isAlive()){
+                synchronized (this){
+                    threads.get(i).resume();
+                }
+            }
+        }
     }
 
     public void start() {

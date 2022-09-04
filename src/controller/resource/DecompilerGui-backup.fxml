@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="352.0" type="VBox" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text=".minecraft文件夹路径：">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="0.0" prefWidth="352.0">
+         <children>
+            <TextField fx:id="minecraftPathTextField" onKeyPressed="#reflashPath" HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onMouseClicked="#selectPath" text="选择..." />
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <ListView fx:id="minecraftVersionsView" disable="true" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" />
+         </VBox.margin>
+      </ListView>
+      <VBox>
+         <children>
+            <CheckBox fx:id="onlyPathCheck" mnemonicParsing="false" text="仅路径（无法使用默认贴图）">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="librariesCheck" mnemonicParsing="false" selected="true" text="反混淆libraries文件夹（内含较大资源文件）">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="jarCheck" mnemonicParsing="false" selected="true" text="提取jar中的资源文件（内含贴图模型等资源文件）">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </CheckBox>
+         </children>
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+      </VBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="332.0">
+         <children>
+            <Label fx:id="tips">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin></Label>
+            <Button fx:id="startButton" defaultButton="true" disable="true" mnemonicParsing="false" onMouseClicked="#start" text="开始" />
+            <Button fx:id="cancelButton" cancelButton="true" disable="true" mnemonicParsing="false" onMouseClicked="#cancel" text="取消" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" />
+         </VBox.margin>
+      </HBox>
+      <ProgressBar fx:id="progress" disable="true" maxHeight="18.0" maxWidth="1.7976931348623157E308" progress="0.0" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </ProgressBar>
+   </children>
+</fx:root>

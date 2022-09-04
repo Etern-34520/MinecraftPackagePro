@@ -43,7 +43,10 @@ public class DecompilerGui extends SplitPane {
     private ScrollPane decompileProgressParent;
     File minecraftPath;
     public String putPath = "C:\\Users\\zzc\\Desktop\\test\\";
-
+    @FXML
+    void selectAll(){
+        minecraftVersionsView.getSelectionModel().selectAll();
+    }
     @FXML
     void reflashPath(KeyEvent event){
         if (event.getCode().equals(KeyCode.ENTER)){
@@ -74,7 +77,6 @@ public class DecompilerGui extends SplitPane {
             minecraftVersionsView.setDisable(false);
             versionsViewFlash();
         }
-        //minecraftVersionsView.getChildren().add();
     }
 
     @FXML

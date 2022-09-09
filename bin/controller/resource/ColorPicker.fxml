@@ -19,14 +19,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root maxHeight="420.0" maxWidth="300.0" minHeight="420.0" minWidth="300.0" prefHeight="420.0" prefWidth="300.0" type="GridPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="300.0" type="GridPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
-    <ColumnConstraints hgrow="NEVER" maxWidth="270.0" minWidth="270.0" prefWidth="270.0" />
-    <ColumnConstraints hgrow="NEVER" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+    <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="270.0" />
+    <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" prefWidth="30.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="270.0" minHeight="270.0" prefHeight="270.0" vgrow="NEVER" />
-    <RowConstraints maxHeight="150.0" minHeight="150.0" prefHeight="150.0" vgrow="NEVER" />
+    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="270.0" vgrow="ALWAYS" />
+    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="150.0" vgrow="ALWAYS" />
   </rowConstraints>
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
@@ -34,7 +34,7 @@
             <Insets bottom="6.0" left="6.0" right="6.0" />
          </GridPane.margin>
          <children>
-            <HBox alignment="CENTER_RIGHT" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" VBox.vgrow="NEVER">
+            <HBox alignment="CENTER_RIGHT" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" VBox.vgrow="ALWAYS">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="R">
                      <font>
@@ -44,7 +44,7 @@
                         <Insets left="3.0" />
                      </HBox.margin>
                   </Text>
-                  <Slider fx:id="sliderR" majorTickUnit="51.0" max="255.0" maxHeight="30.0" maxWidth="190.0" minHeight="30.0" minWidth="190.0" minorTickCount="10" onMouseClicked="#sliderToText" onMouseDragged="#sliderToText" prefHeight="30.0" prefWidth="190.0" showTickMarks="true" HBox.hgrow="ALWAYS">
+                  <Slider fx:id="sliderR" majorTickUnit="51.0" max="255.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="10" onMouseClicked="#sliderToText" onMouseDragged="#sliderToText" prefHeight="30.0" prefWidth="190.0" showTickMarks="true" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="6.0" right="6.0" />
                      </HBox.margin>
@@ -59,7 +59,7 @@
                   <Insets bottom="6.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" maxHeight="30.0" minHeight="30.0" prefHeight="30.0">
+            <HBox alignment="CENTER_RIGHT" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" VBox.vgrow="ALWAYS">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="G">
                      <font>
@@ -69,7 +69,7 @@
                         <Insets left="3.0" />
                      </HBox.margin>
                   </Text>
-                  <Slider fx:id="sliderG" majorTickUnit="51.0" max="255.0" maxHeight="30.0" maxWidth="190.0" minHeight="30.0" minWidth="190.0" minorTickCount="10" onMouseClicked="#sliderToText" onMouseDragged="#sliderToText" prefHeight="30.0" prefWidth="190.0" showTickMarks="true" HBox.hgrow="ALWAYS">
+                  <Slider fx:id="sliderG" majorTickUnit="51.0" max="255.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="10" onMouseClicked="#sliderToText" onMouseDragged="#sliderToText" prefHeight="30.0" prefWidth="190.0" showTickMarks="true" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="6.0" right="6.0" />
                      </HBox.margin>
@@ -84,7 +84,7 @@
                   <Insets bottom="6.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" maxHeight="30.0" minHeight="30.0" prefHeight="30.0">
+            <HBox alignment="CENTER_RIGHT" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" VBox.vgrow="ALWAYS">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="B">
                      <font>
@@ -94,7 +94,7 @@
                         <Insets left="3.0" />
                      </HBox.margin>
                   </Text>
-                  <Slider fx:id="sliderB" majorTickUnit="51.0" max="255.0" maxHeight="30.0" maxWidth="190.0" minHeight="30.0" minWidth="190.0" minorTickCount="10" onMouseClicked="#sliderToText" onMouseDragged="#sliderToText" prefHeight="30.0" prefWidth="190.0" showTickMarks="true" HBox.hgrow="ALWAYS">
+                  <Slider fx:id="sliderB" majorTickUnit="51.0" max="255.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="10" onMouseClicked="#sliderToText" onMouseDragged="#sliderToText" prefHeight="30.0" prefWidth="190.0" showTickMarks="true" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="6.0" right="6.0" />
                      </HBox.margin>
@@ -109,7 +109,7 @@
                   <Insets bottom="6.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" maxHeight="30.0" minHeight="30.0" prefHeight="30.0">
+            <HBox alignment="CENTER_RIGHT" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" VBox.vgrow="ALWAYS">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="alpha">
                      <font>
@@ -136,62 +136,68 @@
             </HBox>
          </children>
       </VBox>
-      <ImageView fitHeight="270.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-         <image>
-            <Image url="@colorHue.png" />
-         </image></ImageView>
-      <Pane fx:id="colorPane" maxHeight="140.0" maxWidth="140.0" minHeight="140.0" minWidth="140.0" prefHeight="140.0" prefWidth="140.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="270.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <children>
-            <Rectangle fx:id="colorBottom" fill="RED" height="140.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="140.0" />
-            <Rectangle height="140.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="140.0">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0" startY="1.0">
-                     <stops>
-                        <Stop color="WHITE" />
-                        <Stop color="#ffffff00" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Rectangle>
-            <Rectangle height="140.0" rotate="-90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="140.0">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0" startY="1.0">
-                     <stops>
-                        <Stop color="BLACK" />
-                        <Stop color="#ffffff00" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Rectangle>
-            <Pane fx:id="alphabg1" layoutX="-0.5" layoutY="-0.5" opacity="0.0" prefHeight="141.0" prefWidth="141.0">
+            <ImageView fitHeight="270.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@colorHue.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="colorPane" layoutX="60.0" layoutY="60.0" maxHeight="140.0" maxWidth="140.0" minHeight="140.0" minWidth="140.0" prefHeight="140.0" prefWidth="140.0">
                <children>
-                  <ImageView fitHeight="141.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                  <Rectangle fx:id="colorBottom" fill="RED" height="140.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="140.0" />
+                  <Rectangle height="140.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="140.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startY="1.0">
+                           <stops>
+                              <Stop color="WHITE" />
+                              <Stop color="#ffffff00" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle height="140.0" rotate="-90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="140.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startY="1.0">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="#ffffff00" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Pane fx:id="alphabg1" layoutX="-0.5" layoutY="-0.5" opacity="0.0" prefHeight="141.0" prefWidth="141.0">
+                     <children>
+                        <ImageView fitHeight="141.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@alphabg1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <ImageView fx:id="dotLight" fitHeight="8.0" fitWidth="8.0" layoutX="0.5" layoutY="139.5" pickOnBounds="true" preserveRatio="true" x="-4.0" y="-4.0">
                      <image>
-                        <Image url="@alphabg1.png" />
+                        <Image url="@dotLight.png" />
                      </image>
                   </ImageView>
+                  <ImageView fx:id="dotDark" fitHeight="8.0" fitWidth="8.0" layoutX="1.5" layoutY="138.5" pickOnBounds="true" preserveRatio="true" visible="false" x="-4.0" y="-4.0">
+                     <image>
+                        <Image url="@dotDark.png" />
+                     </image>
+                  </ImageView>
+                  <Rectangle fx:id="colorTop" fill="#ffffff00" height="140.0" onMouseClicked="#dotSet" onMouseDragged="#dotSet" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="140.0">
+                     <cursor>
+                        <Cursor fx:constant="NONE" />
+                     </cursor>
+                  </Rectangle>
+                  <Polygon fill="DODGERBLUE" layoutX="160.0" layoutY="-20.0" points="-5.0, -8.66, 5.0, -8.66, 0.0, 0.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                  <Polygon fx:id="colorPointer" fill="#1f93ff00" layoutX="159.0" layoutY="-19.5" onMouseDragged="#basicColorChange" opacity="0.0" points="-10.0, -12.32, 10.0, -12.32, 0.0, 5.0" rotate="45.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0">
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                  </Polygon>
                </children>
             </Pane>
-            <ImageView fx:id="dotLight" fitHeight="8.0" fitWidth="8.0" layoutX="0.5" layoutY="139.5" pickOnBounds="true" preserveRatio="true" x="-4.0" y="-4.0">
-               <image>
-                  <Image url="@dotLight.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="dotDark" fitHeight="8.0" fitWidth="8.0" layoutX="1.5" layoutY="138.5" pickOnBounds="true" preserveRatio="true" visible="false" x="-4.0" y="-4.0">
-               <image>
-                  <Image url="@dotDark.png" />
-               </image>
-            </ImageView>
-            <Rectangle fx:id="colorTop" fill="#ffffff00" height="140.0" onMouseClicked="#dotSet" onMouseDragged="#dotSet" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="140.0">
-               <cursor>
-                  <Cursor fx:constant="NONE" />
-               </cursor></Rectangle>
-            <Polygon fill="DODGERBLUE" layoutX="160.0" layoutY="-20.0" points="-5.0, -8.66, 5.0, -8.66, 0.0, 0.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-            <Polygon fx:id="colorPointer" fill="#1f93ff00" layoutX="159.0" layoutY="-19.5" onMouseDragged="#basicColorChange" opacity="0.0" points="-10.0, -12.32, 10.0, -12.32, 0.0, 5.0" rotate="45.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </Polygon>
          </children>
       </Pane>
    </children>

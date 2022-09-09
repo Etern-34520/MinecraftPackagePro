@@ -20,12 +20,14 @@ public class WorkDeskTest extends Application {
         ColorPicker colorPicker = new ColorPicker();
         ColorPicker colorPicker1 = new ColorPicker();
         workDesk.add(colorPicker, WorkDesk.Way.LEFT_TOP,"RGB");
-        workDesk.add(colorPicker1, WorkDesk.Way.RIGHT_TOP, "RGB1");
+        workDesk.add(colorPicker1, WorkDesk.Way.LEFT_TOP, "RGB1");
 
         ColorPlate colorPlate = new ColorPlate();
         ColorPlate colorPlate1 = new ColorPlate();
-        workDesk.add(colorPlate, WorkDesk.Way.RIGHT_BOTTOM, "plate");
+        workDesk.add(colorPlate, WorkDesk.Way.LEFT_BOTTOM, "plate");
         workDesk.add(colorPlate1, WorkDesk.Way.LEFT_BOTTOM,"plate1");
+        colorPicker.setColorPlate(colorPlate);
+        colorPicker1.setColorPlate(colorPlate1);
     }
 
     public static void main(String[] args){

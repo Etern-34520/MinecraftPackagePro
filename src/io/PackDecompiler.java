@@ -22,7 +22,7 @@ public class PackDecompiler {
     private String version;
     public int over1 = 0;
     public boolean over2 = false;
-    private boolean stop = false;
+    private String mainVersion;
     public boolean reachException = false;
     private final List<Thread> threads = new ArrayList<>();
 
@@ -40,7 +40,6 @@ public class PackDecompiler {
 
     private void reachException() {
         reachException = true;
-        stop = true;
     }
 
     public PackDecompiler(File minecraftPath, String version, String putPath) {
@@ -55,7 +54,7 @@ public class PackDecompiler {
                     System.out.println("Path pass:" + "\"" + minecraftPath.getAbsolutePath() + "\"");
                     String[] jsonVersion = version.split("\\.");
                     File indexJson = new File(minecraftPath.getAbsolutePath() + "\\assets\\indexes\\" + jsonVersion[0] + "." + jsonVersion[1] + ".json");
-
+                    mainVersion = jsonVersion[0] + "." + jsonVersion[1];
                     FileInputStream fin = new FileInputStream(indexJson);
                     InputStreamReader json = new InputStreamReader(fin);
                     new JsonReader(json);
@@ -136,7 +135,7 @@ public class PackDecompiler {
         @Override
         public void run() {
             try {
-                fileMap = (HashMap<String, String>) new ResourceIndex(new File("U:\\game\\Minecraft国际版\\.minecraft\\assets"), "1.8").getResourceMap();//Use Minecraft's code from Mojang to prevent bugs :(
+                fileMap = (HashMap<String, String>) new ResourceIndex(new File(minecraftPath.getAbsolutePath()+"\\assets"), mainVersion).getResourceMap();//Use Minecraft's code from Mojang to prevent bugs :(
                 indexLength = fileMap.size();
                 File objects = new File(minecraftPath.getAbsolutePath() + "\\assets\\objects");
                 System.out.println("Read information done");

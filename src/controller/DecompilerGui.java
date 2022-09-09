@@ -42,7 +42,7 @@ public class DecompilerGui extends SplitPane {
     @FXML
     private ScrollPane decompileProgressParent;
     File minecraftPath;
-    public String putPath = "C:\\Users\\zzc\\Desktop\\test\\";
+    public String putPath = "C:\\Users\\zzc\\Desktop\\";
     @FXML
     void selectAll(){
         minecraftVersionsView.getSelectionModel().selectAll();

@@ -53,6 +53,11 @@ public class ColorPicker extends GridPane{
 	private Rectangle colorTop;
 	@FXML
 	private ToggleGroup color;
+	private ColorPlate colorPlate;
+	public void setColorPlate(ColorPlate colorPlate){
+		this.colorPlate = colorPlate;
+		colorPlate.setColorPicker(this);
+	}
 	/*
 	@FXML
 	private Rectangle colorShow2;
@@ -124,7 +129,7 @@ public class ColorPicker extends GridPane{
 			dotLight.setVisible(false);
 			dotDark.setVisible(true);
 		}
-		EditPane.colorPlate.colorSet(r, g, b, sliderA.getValue());
+		colorPlate.colorSet(r, g, b, sliderA.getValue());
 	}
 
 	@FXML
@@ -258,7 +263,7 @@ public class ColorPicker extends GridPane{
 			dotLight.setVisible(false);
 			dotDark.setVisible(true);
 		}
-		EditPane.colorPlate.colorSet(r, g, b, sliderA.getValue());
+		colorPlate.colorSet(r, g, b, sliderA.getValue());
 	}
 
 	private void dotX(double x) {

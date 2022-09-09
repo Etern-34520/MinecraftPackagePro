@@ -7,11 +7,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 
-public class ColorPlate extends FlowPane {
+public class ColorPlate extends GridPane {
 @FXML
 public ToggleGroup color;
-
+private ColorPicker colorPicker;
+public void setColorPicker(ColorPicker colorPicker){
+	this.colorPicker = colorPicker;
+}
 	public ColorPlate() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("resource/ColorPlate.fxml"));
 		loader.setController(this);
@@ -66,7 +70,7 @@ public ToggleGroup color;
 				int g = Integer.parseInt(temp[1]);
 				int b = Integer.parseInt(temp[2]);
 				int a = (int) ((Double.parseDouble(temp[3])) * 100);
-				EditPane.colorPicker.setColor(r,g,b,a);
+				colorPicker.setColor(r,g,b,a);
 			}
 		}
 	}

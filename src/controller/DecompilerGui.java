@@ -2,15 +2,12 @@ package controller;
 
 import io.PackDecompiler;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
 import javafx.stage.DirectoryChooser;
 import jfxtras.styles.jmetro.JMetroStyleClass;
@@ -42,7 +39,7 @@ public class DecompilerGui extends SplitPane {
     @FXML
     private ScrollPane decompileProgressParent;
     File minecraftPath;
-    public String putPath = "C:\\Users\\zzc\\Desktop\\";
+    public String putPath = "D:\\";
     @FXML
     void selectAll(){
         minecraftVersionsView.getSelectionModel().selectAll();
@@ -153,12 +150,7 @@ public class DecompilerGui extends SplitPane {
                     minecraftPath = minecraftPathNew;
                 }
             });
-            minecraftVersionsView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
-                @Override
-                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                    startButton.setDisable(false);
-                }
-            });
+            minecraftVersionsView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> startButton.setDisable(false));
         } catch (Exception e){
             e.printStackTrace();
         }

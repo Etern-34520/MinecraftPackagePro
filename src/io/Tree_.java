@@ -1,15 +1,15 @@
 package io;
 
+import javafx.event.EventHandler;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeItem.TreeModificationEvent;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import javafx.event.EventHandler;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeItem.TreeModificationEvent;
-
-public class Tree {
+public class Tree_ {
 	static TreeItem<String> Null=new TreeItem<String>();
 	String rootName;
 	public HashMap<TreeItem<String>,File> fileMap=new HashMap<TreeItem<String>,File>();
@@ -57,7 +57,7 @@ public class Tree {
 
 					@Override
 					public void handle(TreeModificationEvent<String> arg0) {
-						// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+						// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 						System.out.println(arg0.getTreeItem());
 					}
 
@@ -68,7 +68,7 @@ public class Tree {
 					files.add(add);
 					addItem.getChildren().add(Null);
 					if(tempList[i].list()!=null&&tempList[i].list().length>0) {
-						addItem.addEventHandler(TreeItem.<String>branchExpandedEvent(), new EventHandler<TreeModificationEvent<String>>() {
+						addItem.addEventHandler(TreeItem.branchExpandedEvent(), new EventHandler<TreeModificationEvent<String>>() {
 							@Override
 							public void handle(TreeModificationEvent<String> event) {
 								TreeItem<String> newRoot=event.getTreeItem();

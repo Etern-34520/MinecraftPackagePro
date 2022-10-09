@@ -77,7 +77,7 @@ public class WorkDesk extends GridPane {
             parents.put(rightPane,leftRightParent);
 
         } catch (IOException e) {
-            // TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+            // TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
             e.printStackTrace();
         }
     }

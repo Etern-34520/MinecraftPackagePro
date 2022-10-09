@@ -1,12 +1,13 @@
 package io;
-import java.io.IOException; 
-import java.io.StringReader;  
 
-import com.google.gson.stream.JsonReader; 
-import com.google.gson.stream.JsonToken;  
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
+
+import java.io.IOException;
+import java.io.StringReader;
 
 public class Example { 
-   public static void main(String args[]) { 
+   public static void main(String[] args) {
       String jsonString = 
          "{\"name\":\"Maxsu\", \"age\":26,\"verified\":false,\"marks\": [100,90,85]}";  
       JsonReader reader = new JsonReader(new StringReader(jsonString));    

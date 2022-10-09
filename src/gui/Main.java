@@ -1,17 +1,15 @@
 package gui;
 
-import java.util.prefs.Preferences;
-
 import controller.EditPane;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import jfxtras.styles.jmetro.JMetro;
 import jfxtras.styles.jmetro.Style;
+
+import java.util.prefs.Preferences;
 
 public class Main extends Application{
 	public static void main(String[] args) {
@@ -57,8 +55,7 @@ public class Main extends Application{
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 				// TODO 自动生成的方法存根
-				editPane.fileTree.reflash();
-				
+				editPane.fileTree.refresh();
 			}
 			
 		});

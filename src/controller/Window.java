@@ -56,7 +56,7 @@ public class Window extends GridPane{
 
 	@FXML
 	private Pane paneS;
-	private List<Pane> panes = new ArrayList<>();
+	private final List<Pane> panes = new ArrayList<>();
 	ToggleButton button;
 	Desktop desktop;
 	Hyperlink backLink;
@@ -121,7 +121,7 @@ public class Window extends GridPane{
 	}
 	@FXML
 	private void thisTop() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		for (int i = 0;i<desktop.windows.size();i=i+1) {
 			Window window =desktop.windows.get(i);
 			window.setStyle("-fx-border-color:rgb(50,50,50)");

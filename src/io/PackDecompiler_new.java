@@ -11,7 +11,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 public class PackDecompiler_new {
-    private static HashMap<String, String> fileMap = new HashMap<>();
+    private static final HashMap<String, String> fileMap = new HashMap<>();
     private static JsonReader jsonReader;
     private static String hash;
     private static String path;
@@ -30,9 +30,9 @@ public class PackDecompiler_new {
     }
 
     public void decompile(File minecraftPath, String version, String putPath) {
-        // TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êý´æ¸ù
+        // TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ¹ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½ï¿½
         try {
-            String regVersion = "(\\d)+\\.+(\\d)+(\\.+(\\d))?";//x.x.xÐÎÊ½
+            String regVersion = "(\\d)+\\.+(\\d)+(\\.+(\\d))?";//x.x.xï¿½ï¿½Ê½
             if (version.matches(regVersion)) {
                 System.out.println("Version pass:" + "\"" + version + "\"");
                 if (minecraftPath.isDirectory()) {
@@ -109,7 +109,7 @@ public class PackDecompiler_new {
                 }
             }else{
 
-                //System.out.println("ÎÄ¼þÃû×Ö"+file);
+                //System.out.println("ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½"+file);
                 try {
                     //System.out.println(fileMap.get(file.getName()));
                     if (fileMap.get(file.getName())!=null){
@@ -125,7 +125,7 @@ public class PackDecompiler_new {
                 }
             }
         }else{
-            System.out.println("ÎÄ¼þ²»´æÔÚ");
+            System.out.println("ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         }
     }
 
@@ -188,7 +188,7 @@ public class PackDecompiler_new {
             }
         }
     }
-    // ¸ü¶àÇëÔÄ¶Á£ºhttps://www.yiibai.com/gson/gson_streaming.html
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½https://www.yiibai.com/gson/gson_streaming.html
 
     private void eqaqlsName(String name) {
         switch (name) {
@@ -205,14 +205,14 @@ public class PackDecompiler_new {
     }
 
     public void zipUncompress(String inputFile, String destDirPath) throws Exception {
-        File srcFile = new File(inputFile);//»ñÈ¡µ±Ç°Ñ¹ËõÎÄ¼þ
-        // ÅÐ¶ÏÔ´ÎÄ¼þÊÇ·ñ´æÔÚ
+        File srcFile = new File(inputFile);//ï¿½ï¿½È¡ï¿½ï¿½Ç°Ñ¹ï¿½ï¿½ï¿½Ä¼ï¿½
+        // ï¿½Ð¶ï¿½Ô´ï¿½Ä¼ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
         if (!srcFile.exists()) {
-            throw new Exception(srcFile.getPath() + "ËùÖ¸ÎÄ¼þ²»´æÔÚ");
+            throw new Exception(srcFile.getPath() + "ï¿½ï¿½Ö¸ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         }
         //System.out.println("Start unzip jar");
-        ZipFile zipFile = new ZipFile(srcFile);//´´½¨Ñ¹ËõÎÄ¼þ¶ÔÏó
-        //¿ªÊ¼½âÑ¹
+        ZipFile zipFile = new ZipFile(srcFile);//ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+        //ï¿½ï¿½Ê¼ï¿½ï¿½Ñ¹
         long allSize = 0;
         {
             Enumeration<?> entries = zipFile.entries();
@@ -238,20 +238,20 @@ public class PackDecompiler_new {
                 }
                 if (entry.getName().startsWith("assets")){
                     //System.out.println(entry);
-                    // Èç¹ûÊÇÎÄ¼þ¼Ð£¬¾Í´´½¨¸öÎÄ¼þ¼Ð
+                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ð£ï¿½ï¿½Í´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
                     if (entry.isDirectory()) {
                         //srcFile.mkdirs();
                     } else {
-                        // Èç¹ûÊÇÎÄ¼þ£¬¾ÍÏÈ´´½¨Ò»¸öÎÄ¼þ£¬È»ºóÓÃioÁ÷°ÑÄÚÈÝcopy¹ýÈ¥
+                        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ioï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½copyï¿½ï¿½È¥
                         String path = entry.getName().replace("assets/","");
                         path = path.replace("/","\\");
                         File targetFile = new File(destDirPath+"\\"+path);
-                        // ±£Ö¤Õâ¸öÎÄ¼þµÄ¸¸ÎÄ¼þ¼Ð±ØÐëÒª´æÔÚ
+                        // ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ä¸ï¿½ï¿½Ä¼ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½
                         if (!targetFile.getParentFile().exists()) {
                             targetFile.getParentFile().mkdirs();
                         }
                         targetFile.createNewFile();
-                        // ½«Ñ¹ËõÎÄ¼þÄÚÈÝÐ´Èëµ½Õâ¸öÎÄ¼þÖÐ
+                        // ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ëµ½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
                         InputStream is = zipFile.getInputStream(entry);
                         FileOutputStream fos = new FileOutputStream(targetFile);
                         int len;

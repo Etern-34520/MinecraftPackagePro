@@ -1,6 +1,4 @@
 package controller;
-import java.util.ArrayList;
-import java.util.List;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -16,6 +14,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ColorPicker extends GridPane{
 	boolean cvs = true;
@@ -86,7 +87,7 @@ public class ColorPicker extends GridPane{
 						}
 						textField.setText(t);
 					}
-						((Slider) lookup("#slider"+textField.getId().substring(4, 5))).setValue(Integer.valueOf(t).intValue());
+						((Slider) lookup("#slider"+textField.getId().charAt(4))).setValue(Integer.valueOf(t).intValue());
 						//sliderRed.setValue(Integer.valueOf(r).intValue());
 						colorPosition();
 					}
@@ -342,7 +343,7 @@ public class ColorPicker extends GridPane{
 	@FXML
 	public void sliderToText(Event e) {
 		Slider slider = (Slider) this.lookup("#"+e.getSource().toString().substring(10,17));
-		TextField textField = (TextField) this.lookup("#"+"text"+e.getSource().toString().substring(16,17));
+		TextField textField = (TextField) this.lookup("#"+"text"+e.getSource().toString().charAt(16));
 		int value = ((int) slider.getValue());
 		textField.setText(String.valueOf(value));
 		colorPosition();
@@ -351,7 +352,7 @@ public class ColorPicker extends GridPane{
 	@FXML
 	public void textToSlider(Event e) {
 		TextField textField = (TextField) this.lookup("#"+e.getSource().toString().substring(13,18));
-		Slider slider = (Slider) this.lookup("#"+"slider"+e.getSource().toString().substring(17,18));
+		Slider slider = (Slider) this.lookup("#"+"slider"+e.getSource().toString().charAt(17));
 		String text = textField.getText();
 		if (!text.equals("")) {
 			try {

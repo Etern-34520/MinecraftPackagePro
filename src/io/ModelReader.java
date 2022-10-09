@@ -1,5 +1,8 @@
 package io;
 
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -7,16 +10,13 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-
 public class ModelReader {
 	List<Cube> cubes = new ArrayList<Cube>();
 	static int t = 0;
 	static List<Double> position = new ArrayList<Double>();
 
 	public ModelReader() {
-		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êý´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ¹ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	}
 
@@ -60,7 +60,7 @@ public class ModelReader {
 			try {
 				Thread.sleep(t);
 			} catch (InterruptedException e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+				// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Éµï¿½ catch ï¿½ï¿½
 				e.printStackTrace();
 			}
 			JsonToken token = reader.peek();
@@ -98,7 +98,7 @@ public class ModelReader {
 			try {
 				Thread.sleep(t);
 			} catch (InterruptedException e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+				// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Éµï¿½ catch ï¿½ï¿½
 				e.printStackTrace();
 			}
 			// ln(token);
@@ -122,11 +122,11 @@ public class ModelReader {
 		}
 
 	}
-	// ¸ü¶àÇëÔÄ¶Á£ºhttps://www.yiibai.com/gson/gson_streaming.html
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½https://www.yiibai.com/gson/gson_streaming.html
 
 	private static void eqaqlsName(String name) {
 		Cube cube = new Cube();
-		switch (name.toString()) {
+		switch (name) {
 		case "elements":
 		case "from":
 		case "to":

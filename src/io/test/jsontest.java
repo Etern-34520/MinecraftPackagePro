@@ -1,4 +1,6 @@
-package io;
+package io.test;
+
+import io.ResourceIndex;
 
 import java.io.File;
 import java.util.Map;

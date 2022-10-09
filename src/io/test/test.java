@@ -1,4 +1,4 @@
-package io;
+package io.test;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

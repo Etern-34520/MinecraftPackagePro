@@ -1,4 +1,7 @@
-package io;
+package io.test;
+
+import io.Cube;
+import io.ModelReader;
 
 import java.io.IOException;
 

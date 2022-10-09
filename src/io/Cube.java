@@ -25,6 +25,6 @@ public class Cube {
 	}
 	@Override
 	public String toString() {
-		return new String("cube[x:"+x+";y:"+y+";z:"+z+";length:"+length+";width:"+width+";height:"+height);
+		return "cube[x:" + x + ";y:" + y + ";z:" + z + ";length:" + length + ";width:" + width + ";height:" + height;
 	}
 }

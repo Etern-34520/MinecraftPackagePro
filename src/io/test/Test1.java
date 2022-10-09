@@ -1,7 +1,6 @@
-package io;
+package io.test;
 
-import java.io.File;
-
+import io.Read;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,16 +11,18 @@ import javafx.scene.control.TabPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 public class Test1 extends Application{
 	@FXML TabPane tabpane;
 	public static void main(String[] args) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		launch(args);
 	}
 	Parent root;
 	@Override
 	public void start(Stage stage) throws Exception {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		//tabpane=new TabPane();
 		root = FXMLLoader.load(getClass().getResource("test2.fxml"));
 		
@@ -34,7 +35,7 @@ public class Test1 extends Application{
 	public void addImage() {
 		//tabpane=(TabPane) root.lookup("#tabpane");
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Ñ¡Ôñimage");
+		fileChooser.setTitle("Ñ¡ï¿½ï¿½image");
 		fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
 				);
 				fileChooser.getExtensionFilters().addAll(

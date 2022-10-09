@@ -72,7 +72,7 @@
                                  <contextMenu>
                                     <ContextMenu>
                                       <items>
-                                        <MenuItem mnemonicParsing="false" onAction="#treeReflash" text="刷新" />
+                                        <MenuItem mnemonicParsing="false" onAction="#treeRefresh" text="刷新" />
                                       </items>
                                     </ContextMenu>
                                  </contextMenu></TreeView>

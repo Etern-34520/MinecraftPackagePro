@@ -239,12 +239,10 @@ public class PackDecompiler {
                         fos.close();
                         is.close();
                     }
-
                 }
-
             }
         }
-        over1+=1;
+        over1 ++;
     }
 
 }

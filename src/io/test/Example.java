@@ -1,4 +1,4 @@
-package io;
+package io.test;
 
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
@@ -56,8 +56,7 @@ public class Example {
       } 
    }  
    private static void handleJsonArray(JsonReader reader) throws IOException { 
-      reader.beginArray(); 
-      String fieldname = null; 
+      reader.beginArray();
 
       while (true) { 
          JsonToken token = reader.peek(); 

@@ -2,6 +2,8 @@ package io;
 
 import javafx.event.EventHandler;
 import javafx.scene.control.TreeItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -93,6 +95,16 @@ public class FileTree {
                         create(new tsFile(child.getPath() + "\\"),newRoot);
                     }
                 });
+            } else if(!child.isDirectory()){
+                String[] nameSplit = child.getName().split("\\.");
+                switch (nameSplit[1]){
+                    case "json":
+                        childItem.setGraphic(new ImageView(new Image("file:\\jsonFileIcon.png")));
+                        break;
+                }
+            }
+            if (child.isDirectory()){
+                childItem.setGraphic(new ImageView(new Image("file:\\folder.png")));
             }
         }
     }

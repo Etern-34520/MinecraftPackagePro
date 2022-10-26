@@ -5,14 +5,18 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
+import javafx.scene.ImageCursor;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
@@ -20,8 +24,8 @@ import java.util.List;
 
 public class ColorPicker extends GridPane{
 	boolean cvs = true;
-	boolean pickertop = false;
-	boolean platetop = true;
+	@FXML
+	private Polygon colorPointer;
 	@FXML
 	private GridPane colorPicker;
 	@FXML
@@ -76,22 +80,19 @@ public class ColorPicker extends GridPane{
 		textFields.add(textB);
 		textFields.add(textA);
 		for (TextField textField : textFields) {
-			textField.focusedProperty().addListener(new ChangeListener<Object>() {
-				@Override
-				public void changed(ObservableValue<?> arg0, Object arg1, Object arg2) {
-					String t = textField.getText();
-					if (t.equals("")) {
-						t = "0";
-						if(textField==textA){
-							t = "100";
-						}
-						textField.setText(t);
+			textField.focusedProperty().addListener((ChangeListener<Object>) (arg0, arg1, arg2) -> {
+				String t = textField.getText();
+				if (t.equals("")) {
+					t = "0";
+					if(textField==textA){
+						t = "100";
 					}
-						((Slider) lookup("#slider"+textField.getId().charAt(4))).setValue(Integer.valueOf(t).intValue());
-						//sliderRed.setValue(Integer.valueOf(r).intValue());
-						colorPosition();
-					}
-			});
+					textField.setText(t);
+				}
+					((Slider) lookup("#slider"+textField.getId().charAt(4))).setValue(Integer.valueOf(t).intValue());
+					//sliderRed.setValue(Integer.valueOf(r).intValue());
+					colorPosition();
+				});
 		}
 	}
 	
@@ -135,10 +136,10 @@ public class ColorPicker extends GridPane{
 
 	@FXML
 	public void basicColorChange(MouseEvent e) {
+
 		double ro = colorPane.getRotate();// 度数
 		// colorPointer.setCursor(Cursor.CLOSED_HAND);
-		if (e == null) {
-		} else {
+		if (e != null) {
 			double x = e.getX();
 			double y = e.getY();
 			double a=Math.tanh(x*10000/(120-y)/10000.0) * 180 / Math.PI;
@@ -384,5 +385,13 @@ public class ColorPicker extends GridPane{
 		textB.setText(Integer.toString(b));
 		textA.setText(Integer.toString(a));
 		colorPosition();
+	}
+	@FXML
+	private void pointerCursorHandClose(){
+		colorPointer.setCursor(Cursor.CLOSED_HAND);
+	}
+	@FXML
+	private void pointerCursorHandOpen(){
+		colorPointer.setCursor(Cursor.OPEN_HAND);
 	}
 }

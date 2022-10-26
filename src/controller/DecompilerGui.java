@@ -96,26 +96,38 @@ public class DecompilerGui extends SplitPane {
         DirectoryChooser putPathChooser = new DirectoryChooser();
         putPathChooser.setTitle("选择导出MinecraftDefaultPack文件夹路径");
 //        minecraftPathChooser.setInitialDirectory(new File("计算机"));
-        File putPath =
+        File put =
                 putPathChooser.showDialog(this.getScene().getWindow());
-        if (putPath != null){
-            this.putPath = putPath.getPath();
-            putPathTextField.setText(putPath.getPath());
+        if (put != null){
+            this.putPath = put.getPath();
+            if (!putPath.endsWith("\\")){
+                putPath = putPath+"\\";
+            }
+            putPathTextField.setText(put.getPath());
         }
     }
 
     @FXML
     void start(MouseEvent event) {
-        List<String> versions = minecraftVersionsView.getSelectionModel().getSelectedItems();
-        for (String version : versions) {
-            PackDecompiler packDecompiler = new PackDecompiler(
-                    minecraftPath,
-                    version,
-                    putPath+"minecraftDefaultPack_"+version
-            );
-            decompileProgress.getChildren().add(new ProgressPane(packDecompiler,version));
+        if (librariesCheck.isSelected()|jarCheck.isSelected()){
+            List<String> versions = minecraftVersionsView.getSelectionModel().getSelectedItems();
+            for (String version : versions) {
+                PackDecompiler packDecompiler = new PackDecompiler(
+                        minecraftPath,
+                        version,
+                        putPath+"minecraftDefaultPack_"+version
+                );
+                packDecompiler.librariesAble(librariesCheck.isSelected());
+                packDecompiler.jarAble(jarCheck.isSelected());
+                ProgressPane progressPane = new ProgressPane(packDecompiler, version);
+                decompileProgress.getChildren().add(progressPane);
+                if ((!librariesCheck.isSelected())&&jarCheck.isSelected()){
+                    progressPane.onlyIndeterminateProgress();
+                }
+            }
+        } else {
+            tip("未选择反混淆项",2000);
         }
-
     }
     public void versionsViewFlash(){
         minecraftVersionsView.getItems().removeAll(minecraftVersionsView.getItems());

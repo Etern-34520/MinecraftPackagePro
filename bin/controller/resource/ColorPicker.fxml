@@ -1,25 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Polygon?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
-<fx:root gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="300.0" type="GridPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<fx:root gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="300.0" type="GridPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="270.0" />
     <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" prefWidth="30.0" />
@@ -143,7 +132,7 @@
                   <Image url="@colorHue.png" />
                </image>
             </ImageView>
-            <Pane fx:id="colorPane" layoutX="60.0" layoutY="60.0" maxHeight="140.0" maxWidth="140.0" minHeight="140.0" minWidth="140.0" prefHeight="140.0" prefWidth="140.0">
+            <Pane fx:id="colorPane" layoutX="65.0" layoutY="65.0" maxHeight="140.0" maxWidth="140.0" minHeight="140.0" minWidth="140.0" prefHeight="140.0" prefWidth="140.0">
                <children>
                   <Rectangle fx:id="colorBottom" fill="RED" height="140.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="140.0" />
                   <Rectangle height="140.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="140.0">
@@ -191,7 +180,7 @@
                      </cursor>
                   </Rectangle>
                   <Polygon fill="DODGERBLUE" layoutX="160.0" layoutY="-20.0" points="-5.0, -8.66, 5.0, -8.66, 0.0, 0.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                  <Polygon fx:id="colorPointer" fill="#1f93ff00" layoutX="159.0" layoutY="-19.5" onMouseDragged="#basicColorChange" opacity="0.0" points="-10.0, -12.32, 10.0, -12.32, 0.0, 5.0" rotate="45.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0">
+                  <Polygon fx:id="colorPointer" fill="#1f93ff00" layoutX="159.0" layoutY="-19.5" onMouseDragged="#basicColorChange" onMousePressed="#pointerCursorHandClose" onMouseReleased="#pointerCursorHandOpen" opacity="0.0" points="-10.0, -12.32, 10.0, -12.32, 0.0, 5.0" rotate="45.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0">
                      <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor>

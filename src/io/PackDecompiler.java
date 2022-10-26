@@ -1,6 +1,7 @@
 package io;
 
 import com.google.gson.stream.JsonReader;
+import controller.ProgressPane;
 import org.apache.commons.io.FileUtils;
 
 import java.io.*;
@@ -66,6 +67,14 @@ public class PackDecompiler {
             return;
         }
     }
+    boolean libraries = true;
+    boolean jar = true;
+    public void librariesAble(boolean set){
+        libraries = set;
+    }
+    public void jarAble(boolean set){
+        jar = set;
+    }
 
     public void cancel() {
         progress = 0;
@@ -97,12 +106,23 @@ public class PackDecompiler {
     }
 
     public void start() {
-        JarThread jarThread = new JarThread();
-        HashThread hashThread = new HashThread();
-        threads.add(jarThread);
-        threads.add(hashThread);
-        jarThread.start();
-        hashThread.start();
+        if (jar){
+            JarThread jarThread = new JarThread();
+            threads.add(jarThread);
+            jarThread.start();
+        }
+        if (libraries){
+            HashThread hashThread = new HashThread();
+            threads.add(hashThread);
+            hashThread.start();
+        }
+        if ((!libraries)&&jar){
+            over2 = true;
+        }
+        if ((!jar)&&libraries){
+            progress = 100;
+            over1 = 5;
+        }
     }
 
     public boolean isOver() {

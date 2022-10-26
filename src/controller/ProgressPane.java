@@ -15,8 +15,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
 import jfxtras.styles.jmetro.JMetroStyleClass;
 
-import java.util.List;
-
 public class ProgressPane extends GridPane {
     private PackDecompiler packDecompiler;
     @FXML
@@ -32,6 +30,11 @@ public class ProgressPane extends GridPane {
     @FXML
     private Button pauseButton;
     boolean paused = false;
+    public void onlyIndeterminateProgress(){
+        progressBar.setVisible(false);
+        progressBar1.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
+        progressBar1.setVisible(true);
+    }
     @FXML
     void cancel(MouseEvent event) {
         packDecompiler.cancel();
@@ -74,7 +77,8 @@ public class ProgressPane extends GridPane {
         cancelButton.setVisible(false);
         pauseButton.setVisible(false);
     }
-    boolean aBoolean =true;
+
+    boolean aBoolean = true;
     ProgressPane(PackDecompiler packDecompiler, String version) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("resource/ProgressPane.fxml"));
@@ -89,7 +93,6 @@ public class ProgressPane extends GridPane {
 //            tips.setText("正在反混淆中...");
             Thread flasher = new Thread(() -> {
                 while (!packDecompiler.isOver()) {
-                    packDecompiler.isOver();
                     try {
                         Thread.sleep(100);
                     } catch (Exception e) {

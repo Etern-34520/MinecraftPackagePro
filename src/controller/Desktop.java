@@ -40,7 +40,7 @@ public class Desktop extends GridPane{
 			property.get(i).addListener(new ChangeListener<Object>() {
 				@Override
 				public void changed(ObservableValue<?> arg0, Object arg1, Object arg2) {
-					// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+					// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					//windowBasic.setMaxWidth(getWidth());
 					//windowBasic.setMaxHeight(getHeight());
 				}
@@ -89,7 +89,7 @@ public class Desktop extends GridPane{
 			window.button=visibleButton;
 			window.desktop=this;
 		} catch (IOException e) {
-			// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+			// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Éµï¿½ catch ï¿½ï¿½
 			e.printStackTrace();
 		}
 	}

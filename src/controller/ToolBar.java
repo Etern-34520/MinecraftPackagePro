@@ -17,14 +17,14 @@ public class ToolBar extends GridPane implements Initializable {
 @FXML HBox buttonBar;
 ToggleGroup buttons;
 	public ToolBar() {
-		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êı´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ„é€ å‡½æ•°å­˜æ ¹
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("resource/ToolBar.fxml"));
 			loader.setController(this);
 			loader.setRoot(this);
 			loader.load();
 		} catch (IOException e) {
-			// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+			// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 			e.printStackTrace();
 		}
 	}
@@ -41,7 +41,7 @@ ToggleGroup buttons;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 	}
 

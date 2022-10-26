@@ -130,7 +130,6 @@ public class ModelReader {
 		case "elements":
 		case "from":
 		case "to":
-			// ln(a);
 		case "faces":
 		case "down":
 		case "up":

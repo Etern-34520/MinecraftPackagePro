@@ -54,7 +54,7 @@ public class EditPane extends GridPane implements Initializable{
 
 			TreeItem<FileTree.tsFile> root= new TreeItem<>();
 			fileTree.setRootOfAll(root);
-			fileTree.create(new File("U:\\minecraftDefaultPack_1.8.9"), root);
+			fileTree.create(new File("E:\\minecraftDefaultPack_1.8.9"), root);
 			packTree.setRoot(root);
 			packTree.setShowRoot(false);
 			packTree.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TreeItem<FileTree.tsFile>>() {

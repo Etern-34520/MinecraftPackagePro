@@ -25,7 +25,7 @@ public class Read {
 	static Pane view2D;
 	static GridPane basicPane;
 	public Tab oneFile(String root) {
-		//EditPane.waitingText = "∂¡»°÷–";
+		//EditPane.waitingText = "ËØªÂèñ‰∏≠";
 		//new EditPane().waitingStart();
 		try {
 			//System.out.println(root);

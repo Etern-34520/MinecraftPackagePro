@@ -18,7 +18,7 @@ public class Main extends Application{
 
 	@Override//36,8
 	public void start(Stage stage) throws Exception {
-		Preferences rootPreferences = Preferences.userRoot();// ä½¿ç”¨ä¸Šæ¬¡å…³é—­æ—¶çš„ä½ç½®å’Œå¤§å°
+		Preferences rootPreferences = Preferences.userRoot();// Ê¹ÓÃÉÏ´Î¹Ø±ÕÊ±µÄÎ»ÖÃºÍ´óĞ¡
 		double x = rootPreferences.getDouble("X", 265);
 		double y = rootPreferences.getDouble("Y", 140);
 		double width = rootPreferences.getDouble("W", 1350);
@@ -26,7 +26,7 @@ public class Main extends Application{
 		System.out.println("Program Start");
 		System.out.println("Location:[x:"+x+"y:"+y+"]Size:["+width+"X"+height+"]");
 		System.out.println("information");
-		System.out.println("â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€");
+		System.out.println("©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤");
 		EditPane editPane=new EditPane();
 		Scene scene = new Scene(editPane,width,height);
 		stage.setScene(scene);
@@ -46,18 +46,13 @@ public class Main extends Application{
 			preferences.putDouble("W", width1);
 			preferences.putDouble("H", height1);
 			// io.Settings.save();
-			System.out.println("â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€");
+			System.out.println("©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤");
 			System.out.println("Program Over");
 			System.out.println("Location:[x:"+ x1 +"y:"+ y1 +"]Size:["+ width1 +"X"+ height1 +"]");
 		});
-		stage.focusedProperty().addListener(new ChangeListener<Boolean>() {
-
-			@Override
-			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
-				editPane.fileTree.refresh();
-			}
-			
+		stage.focusedProperty().addListener((observable, oldValue, newValue) -> {
+			// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+			editPane.fileTree.refresh();
 		});
 	}
 

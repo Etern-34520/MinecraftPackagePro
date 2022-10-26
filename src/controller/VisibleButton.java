@@ -19,7 +19,7 @@ Window window;
 @FXML
 private Hyperlink backLink;
 	public VisibleButton(Window window) throws IOException {
-		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êı´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ„é€ å‡½æ•°å­˜æ ¹
 		this.window=window;
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("resource/VisibleButton.fxml"));
 		loader.setController(this);
@@ -29,13 +29,13 @@ private Hyperlink backLink;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 		//backLink;
 		window.backLink=backLink;
 	}
 	
 	public ToggleButton getButton() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 		return visibleButton;
 	}
 
@@ -46,12 +46,12 @@ private Hyperlink backLink;
 	}
 	
 	public void setPrefWidth(int i) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 		visibleButton.setPrefWidth(i);
 	}
 	
 	public void setPrefHeight(int i) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 		visibleButton.setPrefWidth(i);
 	}
 	

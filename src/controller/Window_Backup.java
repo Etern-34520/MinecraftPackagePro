@@ -81,7 +81,7 @@ public class Window_Backup extends GridPane{
 //	}
 //	@FXML
 //	private void thisTop() {
-//		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+//		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 //		for (int i = 0;i<desktop.windows.size();i=i+1) {
 //			Window_Backup window =desktop.windows.get(i);
 //			window.setStyle("-fx-border-color:rgb(50,50,50)");

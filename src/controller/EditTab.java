@@ -21,7 +21,7 @@ public class EditTab extends GridPane {
 @FXML MeshView modelView;
 Tab tab;
 	public EditTab() {
-		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êı´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ„é€ å‡½æ•°å­˜æ ¹
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("resource/EditTab.fxml"));
 			loader.setController(this);
@@ -29,7 +29,7 @@ Tab tab;
 			loader.load();
 			
 		} catch (IOException e) {
-			// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+			// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 			e.printStackTrace();
 		}
 	}
@@ -70,7 +70,7 @@ Tab tab;
 				//System.out.println(file.getName());
 			} catch (IOException e) {
 				String message=e.getMessage();
-				if(message.endsWith("(¾Ü¾ø·ÃÎÊ¡£)")) {
+				if(message.endsWith("(æ‹’ç»è®¿é—®ã€‚)")) {
 					System.out.println(message);
 				} else {
 					e.printStackTrace();

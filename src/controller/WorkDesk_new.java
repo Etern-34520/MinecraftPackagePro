@@ -140,9 +140,9 @@ public class WorkDesk_new extends GridPane {
         } else {
             throw new EnumConstantNotPresentException(Way.class, "must be ways");
         }
-        Window window;
+        Window_Backup window;
         try {
-            window = new Window(node, width, height);
+            window = new Window_Backup(node, width, height);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

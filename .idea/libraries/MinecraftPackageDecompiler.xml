@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="MinecraftPackageDecompiler">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/classes/artifacts/MinecraftPackageDecompiler_jar/MinecraftPackageDecompiler.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

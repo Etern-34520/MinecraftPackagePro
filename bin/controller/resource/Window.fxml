@@ -1,86 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.effect.DropShadow?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<fx:root style="-fx-border-color: rgb(50,50,50);" type="GridPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-   <rowConstraints>
-      <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" />
-      <RowConstraints vgrow="ALWAYS" />
-   </rowConstraints>
-   <columnConstraints>
-      <ColumnConstraints hgrow="ALWAYS" />
-      <ColumnConstraints hgrow="NEVER" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-   </columnConstraints>
+<fx:root maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" type="GridPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints hgrow="NEVER" maxWidth="5.0" minWidth="0.0" prefWidth="5.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
+      <ColumnConstraints hgrow="NEVER" maxWidth="5.0" minWidth="5.0" prefWidth="5.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="5.0" minHeight="5.0" prefHeight="5.0" vgrow="NEVER" />
+    <RowConstraints maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="5.0" minHeight="5.0" prefHeight="5.0" vgrow="NEVER" />
+  </rowConstraints>
    <children>
-      <Pane fx:id="windowTitle" minWidth="50.0" onMouseDragged="#windowMove" onMousePressed="#movePrepare" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
-      <GridPane fx:id="basic" GridPane.columnSpan="2" GridPane.rowSpan="2">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="8.0" minWidth="8.0" prefWidth="8.0" />
-          <ColumnConstraints hgrow="SOMETIMES" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="8.0" minWidth="8.0" prefWidth="8.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="8.0" minHeight="8.0" prefHeight="8.0" vgrow="SOMETIMES" />
-          <RowConstraints vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="8.0" minHeight="8.0" prefHeight="8.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Pane fx:id="paneNW" onMouseDragged="#draggedNW">
-               <cursor>
-                  <Cursor fx:constant="NW_RESIZE" />
-               </cursor>
-            </Pane>
-            <Pane fx:id="paneN" onMouseDragged="#draggedN" GridPane.columnIndex="1">
-               <cursor>
-                  <Cursor fx:constant="N_RESIZE" />
-               </cursor>
-            </Pane>
-            <Pane fx:id="paneNE" onMouseDragged="#draggedNE" GridPane.columnIndex="2">
-               <cursor>
-                  <Cursor fx:constant="NE_RESIZE" />
-               </cursor>
-            </Pane>
-            <Pane fx:id="paneW" onMouseDragged="#draggedW" GridPane.rowIndex="1">
-               <cursor>
-                  <Cursor fx:constant="W_RESIZE" />
-               </cursor>
-            </Pane>
-            <Pane fx:id="paneE" onMouseDragged="#draggedE" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <cursor>
-                  <Cursor fx:constant="E_RESIZE" />
-               </cursor>
-            </Pane>
-            <Pane fx:id="paneSW" onMouseDragged="#draggedSW" GridPane.rowIndex="2">
-               <cursor>
-                  <Cursor fx:constant="SW_RESIZE" />
-               </cursor>
-            </Pane>
-            <Pane fx:id="paneSE" onMouseDragged="#draggedSE" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <cursor>
-                  <Cursor fx:constant="SE_RESIZE" />
-               </cursor>
-            </Pane>
-            <Pane fx:id="paneS" onMouseDragged="#draggedS" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <cursor>
-                  <Cursor fx:constant="S_RESIZE" />
-               </cursor>
-            </Pane>
-         </children>
-      </GridPane>
-      <Text fx:id="close" onMouseClicked="#windowClose" onMouseEntered="#closeButtonFocused" onMouseExited="#closeButtonFocusedOut" strokeType="OUTSIDE" strokeWidth="0.0" text="╳" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Text>
+      <Pane GridPane.columnSpan="3" GridPane.rowSpan="2" />
+      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+      <Button fx:id="hideButton" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onMouseClicked="#windowHide" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Pane maxHeight="1.0" minHeight="1.0" prefHeight="1.0" style="-fx-background-color: rgb(53,53,53);" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
    </children>
-   <effect>
-      <DropShadow height="15.0" offsetX="3.0" offsetY="5.0" radius="8.25" width="20.0" />
-   </effect>
 </fx:root>

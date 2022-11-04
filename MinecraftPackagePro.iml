@@ -31,5 +31,6 @@
     <orderEntry type="library" name="commons-io-2.4" level="project" />
     <orderEntry type="library" name="guava-17.0" level="project" />
     <orderEntry type="library" name="commons-lang3-3.3.2" level="project" />
+    <orderEntry type="library" name="commons-io-2.4 (2)" level="project" />
   </component>
 </module>

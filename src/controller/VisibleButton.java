@@ -1,9 +1,5 @@
 package controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,12 +9,16 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 public class VisibleButton extends Pane implements Initializable {
 @FXML ToggleButton visibleButton;
-Window window;
+Window_Backup window;
 @FXML
 private Hyperlink backLink;
-	public VisibleButton(Window window) throws IOException {
+	public VisibleButton(Window_Backup window) throws IOException {
 		// TODO 自动生成的构造函数存根
 		this.window=window;
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("resource/VisibleButton.fxml"));

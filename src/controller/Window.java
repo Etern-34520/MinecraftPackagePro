@@ -2,18 +2,14 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import jfxtras.styles.jmetro.JMetroStyleClass;
 
 import java.io.IOException;
@@ -30,9 +26,10 @@ public class Window extends GridPane{
 	@FXML
 	Pane windowTitle;
 	@FXML
-	Text close;
+	Button hideButton;
 	@FXML
 	GridPane basic;
+	private ToggleButton connectedButton;
 	@FXML
 	private Pane paneNW;
 
@@ -63,37 +60,34 @@ public class Window extends GridPane{
 	double prefX;
 	double prefY;
 	
-	public Window(Node node, Double width, Double height) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("resource/Window.fxml"));
-		loader.setController(this);
-		loader.setRoot(this);
-		loader.load();
-		basic.add(node,2,2,1,1);
-		//windowTitle.setMinWidth();
-		//windowTitle.setPrefHeight(node.getLayoutBounds().getHeight());
-		this.setMaxWidth(width);
-		this.setMaxHeight(height);
-		panes.add(paneNE);
-		panes.add(paneN);
-		panes.add(paneNW);
-		panes.add(paneE);
-		panes.add(paneW);
-		panes.add(paneSE);
-		panes.add(paneS);
-		panes.add(paneSW);
-		this.getStyleClass().add(JMetroStyleClass.BACKGROUND);
+	public Window(Node node,ToggleButton connectedButton) {
+		try {
+			this.connectedButton = connectedButton;
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("resource/Window.fxml"));
+			loader.setController(this);
+			loader.setRoot(this);
+			loader.load();
+			this.add(node,1,2,1,1);
+			//windowTitle.setMinWidth();
+			//windowTitle.setPrefHeight(node.getLayoutBounds().getHeight());
+			panes.add(paneNE);
+			panes.add(paneN);
+			panes.add(paneNW);
+			panes.add(paneE);
+			panes.add(paneW);
+			panes.add(paneSE);
+			panes.add(paneS);
+			panes.add(paneSW);
+			this.getStyleClass().add(JMetroStyleClass.BACKGROUND);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-	
-	public void setPrefLocation(double x,double y) {
-		prefX=x;
-		prefY=y;
-		GridPane.setMargin(this , new Insets(y,0,0,x));
+	@FXML void windowHide(){
+		connectedButton.setSelected(false);
 	}
-	
-	@FXML void windowClose(){
-		button.setSelected(false);
-	}
-	@FXML void windowMove(MouseEvent event){
+
+	/*@FXML void windowMove(MouseEvent event){
 		Insets margin = GridPane.getMargin(this);
 		double x = margin.getLeft();
 		double y = margin.getTop();
@@ -132,7 +126,7 @@ public class Window extends GridPane{
 			arrenge=0;
 		}
 		this.setStyle("-fx-border-color:rgb(0,120,215)");
-	}
+	}*/
 	public void pin(){
 		for (int i = 0; i < panes.size(); i++) {
 			panes.get(i).setCursor(Cursor.DEFAULT);
@@ -148,25 +142,12 @@ public class Window extends GridPane{
 		paneS.setCursor(Cursor.S_RESIZE);
 		paneSW.setCursor(Cursor.SW_RESIZE);
 	}
-	@FXML
-	void closeButtonFocused() {
-		Font focus=new Font(19);
-		close.setFont(focus);
-		close.setFill(Color.rgb(0, 120, 215));
-	}
-	@FXML
-	void closeButtonFocusedOut() {
-		Font focusout=new Font(17);
-		close.setFont(focusout);
-		close.setFill(Color.rgb(255, 255, 255));
-	}
-	@FXML
+	/*@FXML
 	void movePrepare(MouseEvent event){
 		sx=event.getX();
 		sy=event.getY();
 		thisTop();
-	}
-
+	}*/
 	@FXML
 	void draggedE(MouseEvent event) {
 

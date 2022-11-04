@@ -1,9 +1,5 @@
 package controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,6 +13,10 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Desktop extends GridPane{
 	@FXML
 	private HBox bar;
@@ -26,7 +26,7 @@ public class Desktop extends GridPane{
 	//List<Integer> windowsArrenge=new ArrayList<Integer>();
 	//List<Double> windowsLocation=new ArrayList<Double>();
 	//List<ToggleButton> buttons=new ArrayList<ToggleButton>();
-	List<Window> windows=new ArrayList<Window>();
+	List<Window_Backup> windows=new ArrayList<Window_Backup>();
 	int windowsQuantity=0;
 	public Desktop() throws IOException{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("resource/Desktop.fxml"));
@@ -63,7 +63,7 @@ public class Desktop extends GridPane{
 				index=windowsQuantity;
 			}
 			//System.out.println(windowsQuantity);
-			Window window = new Window(node,width,height);
+			Window_Backup window = new Window_Backup(node,width,height);
 			window.arrenge=0;
 			window.x=x;
 			window.y=y;
@@ -109,7 +109,7 @@ public class Desktop extends GridPane{
 	@FXML
 	public void focusChanged() {
 		for (int i = 0;i<windows.size();i=i+1) {
-			Window window =windows.get(i);
+			Window_Backup window =windows.get(i);
 			window.setStyle("-fx-border-color:rgb(50,50,50)");
 		}
 	}

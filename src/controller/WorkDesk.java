@@ -1,17 +1,12 @@
 package controller;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import jfxtras.styles.jmetro.JMetroStyleClass;
 
@@ -51,6 +46,9 @@ public class WorkDesk extends GridPane {
     SplitPane leftRightParent;
     @FXML
     SplitPane allParent;
+    @FXML
+    AnchorPane moveActionPane;
+    @FXML GridPane centerParent;
     ToggleGroup topLeftGroup = new ToggleGroup();
     ToggleGroup topRightGroup = new ToggleGroup();
     ToggleGroup leftTopGroup = new ToggleGroup();
@@ -86,6 +84,16 @@ public class WorkDesk extends GridPane {
         HBox buttonBar = null;
         SplitPane splitPane = null;
         ToggleButton addButton = new ToggleButton(name);
+        Window window = new Window(node,addButton);
+        /*addButton.setOnMouseDragged(event -> {
+            Parent addButtonParent = addButton.getParent();
+            HBox.setMargin(addButton,new Insets(event.getSceneX(),0,0, event.getSceneY()));
+            addButton.setLayoutX(event.getSceneX());
+            addButton.setLayoutY(event.getSceneY());
+        });
+        addButton.setOnMouseReleased(event -> {
+            moveActionPane.setMouseTransparent(true);
+        });*/
         addButton.setFont(new Font(10));
         addButton.setStyle("-fx-font-size: 10; border_hover_selected_color: rgb(45,47,48)");
         //System.out.println(addButton.getStylesheets());
@@ -142,40 +150,40 @@ public class WorkDesk extends GridPane {
         } else {
             throw new EnumConstantNotPresentException(Way.class,"must be ways");
         }
-        parents.put(node,splitPane);
-        splitPane.getItems().add(index,node);
+        parents.put(window,splitPane);
+        splitPane.getItems().add(index,window);
         addButton.setToggleGroup(group);
         buttonBar.getChildren().add(addButton);
         addButton.setSelected(true);
         addButton.setStyle("-fx-font-size: 10;-fx-background-color :rgb(30,30,30);border_hover_selected_color: rgb(45,47,48)");
         int finalIndex = index;
-        addButton.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                SplitPane splitPane1 = parents.get(node);
-                if (addButton.isSelected()){
-                    addButton.setStyle("-fx-font-size: 10;-fx-background-color :rgb(30,30,30);border_hover_selected_color: rgb(45,47,48)");
-                    try {
-                        splitPane1.getItems().add(finalIndex,node);
-                    } catch (Exception e) {
-                        splitPane1.getItems().add(node);
-                    }
-                    splitPane1.setMaxWidth(Integer.MAX_VALUE);
-                } else {
-                    addButton.setStyle("-fx-font-size: 10; border_hover_selected_color: rgb(45,47,48)");
-                    splitPane1.getItems().remove(node);
-                    if (splitPane1.getItems().isEmpty()){
-                        splitPane1.setMaxWidth(0);
-                    } else {
-                        splitPane1.setMaxWidth(Integer.MAX_VALUE);
-                    }
+        addButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            SplitPane splitPane1 = parents.get(window);
+            if (addButton.isSelected()){
+                addButton.setStyle("-fx-font-size: 10;-fx-background-color :rgb(30,30,30);border_hover_selected_color: rgb(45,47,48)");
+                try {
+                    splitPane1.getItems().add(finalIndex,window);
+                } catch (Exception e) {
+                    splitPane1.getItems().add(window);
                 }
-
-                //flash();
+                splitPane1.setMaxWidth(Integer.MAX_VALUE);
+            } else {
+                addButton.setStyle("-fx-font-size: 10; border_hover_selected_color: rgb(45,47,48)");
+                splitPane1.getItems().remove(window);
+                if (splitPane1.getItems().isEmpty()){
+                    splitPane1.setMaxWidth(0);
+                } else {
+                    splitPane1.setMaxWidth(Integer.MAX_VALUE);
+                }
             }
+
+            //flash();
         });
 
         flash();
+    }
+    public void setCenterBasic(Node centerBasic){
+        centerParent.add(centerBasic,0,0);
     }
 
     private void flash() {

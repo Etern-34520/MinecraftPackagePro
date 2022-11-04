@@ -11,9 +11,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class FileTree {
-    public File getFile(TreeItem<String> newValue) {
-        return new File("");
-    }
     private final tsFile LOADING = new tsFile("loading...");
     private final TreeItem<tsFile> loading = new TreeItem<>(LOADING);
 

@@ -1,20 +1,21 @@
 package controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.MeshView;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EditTab extends GridPane {
 @FXML FlowPane picturesPane;
@@ -43,8 +44,6 @@ Tab tab;
 		if (file!=null&&file.isFile()) {
 			try {
 				//System.out.println(root);
-				Canvas canvas=new Canvas();
-				GraphicsContext gc=canvas.getGraphicsContext2D();
 				FileInputStream input;
 				input = new FileInputStream(file);
 				Image image=new Image(input);
@@ -59,13 +58,36 @@ Tab tab;
 				allowedSuffix.add("gif");
 				int length=allowedSuffix.size();
 				boolean unSupport = true;
-				for (int i = 0;i<length;i=i+1) {
-					if (suffix.toLowerCase().equals(allowedSuffix.get(i))) {
-						tab = new Tab(name , this);
+				for (String s : allowedSuffix) {
+					assert suffix != null;
+					if (suffix.toLowerCase().equals(s)) {
+						tab = new Tab(name, this);
 						unSupport = false;
 					}
 				}
-					if (unSupport) System.out.println("not support suffix:"+suffix);
+				if (unSupport) System.out.println("not support suffix:"+suffix);
+				else {
+					List<Canvas> canvases = new ArrayList<>();
+					int size = 100;
+					if (image.getHeight()%image.getWidth() == 0){
+						WritableImage writableImage = new WritableImage(image.getPixelReader(),(int) image.getWidth(),(int) image.getHeight());
+						double cutIndex = image.getHeight() / image.getWidth();
+						for (int i = 0; i < cutIndex; i++) {
+							Canvas canvas=new Canvas(size,size);
+							canvas.setStyle( "-fx-background-color:rgb(255,255,255);");
+							picturesPane.getChildren().add(canvas);
+							canvases.add(canvas);
+							GraphicsContext gc=canvas.getGraphicsContext2D();
+							gc.setImageSmoothing(false);
+							gc.drawImage(image,0,i*size, image.getWidth(), image.getHeight()/cutIndex,
+									0,i* size, size, size);
+						}
+//						gc.drawImage(writableImage,0,0,100,100);
+					}
+					int picturesPaneSize = (int) Math.sqrt(canvases.size());
+					picturesPane.setPrefWidth(picturesPaneSize*size);
+					picturesPane.setPrefHeight(picturesPaneSize*size);
+				}
 				
 				//System.out.println(file.getName());
 			} catch (IOException e) {

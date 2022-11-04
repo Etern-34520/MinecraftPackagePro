@@ -1,11 +1,9 @@
 package io;
 
 import com.google.gson.stream.JsonReader;
-import controller.ProgressPane;
 import org.apache.commons.io.FileUtils;
 
 import java.io.*;
-import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -79,27 +77,27 @@ public class PackDecompiler {
     public void cancel() {
         progress = 0;
         List<Thread> threads = this.getThreads();
-        for (int i = 0; i < threads.size(); i++) {
-            threads.get(i).stop();
+        for (Thread thread : threads) {
+            thread.stop();
         }
         System.out.println("canceled");
     }
     public void pause(){
         List<Thread> threads = this.getThreads();
-        for (int i = 0; i < threads.size(); i++) {
-            if (threads.get(i).isAlive()){
-                synchronized (this){
-                    threads.get(i).suspend();
+        for (Thread thread : threads) {
+            if (thread.isAlive()) {
+                synchronized (this) {
+                    thread.suspend();
                 }
             }
         }
     }
     public void reStart() {
         List<Thread> threads = this.getThreads();
-        for (int i = 0; i < threads.size(); i++) {
-            if (threads.get(i).isAlive()){
-                synchronized (this){
-                    threads.get(i).resume();
+        for (Thread thread : threads) {
+            if (thread.isAlive()) {
+                synchronized (this) {
+                    thread.resume();
                 }
             }
         }
@@ -202,16 +200,6 @@ public class PackDecompiler {
             }
         } else {
             System.out.println("反混淆assets完成");
-        }
-    }
-
-    private void copyFile(File source, File targetFile) throws IOException {
-        try (FileChannel inputChannel = new FileInputStream(source).getChannel(); FileChannel outputChannel = new FileOutputStream(targetFile).getChannel()) {
-            outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
-        } catch (Exception e) {
-            reachException();
-            e.printStackTrace();
-            return;
         }
     }
 

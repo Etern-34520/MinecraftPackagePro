@@ -43,7 +43,6 @@ public class EditPane extends GridPane implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO ??????????????
 		try {
-			
 			Desktop desktop=new Desktop();
 			colorPicker = new ColorPicker();
 			colorPlate = new ColorPlate();
@@ -62,7 +61,7 @@ public class EditPane extends GridPane implements Initializable{
 				public void changed(ObservableValue<? extends TreeItem<FileTree.tsFile>> observable, TreeItem<FileTree.tsFile> oldValue, TreeItem<FileTree.tsFile> newValue) {
 					// TODO ??????????????
 					EditTab tab=new EditTab();
-//					tab.uploadPicture(fileTree.getFile(newValue));
+					tab.uploadPicture(newValue.getValue());
 					if (tab.toTab()!=null) {
 						if (contains(tab.toTab())) {
 							desktop.getTabPane().selectionModelProperty().get().select(getInTabList(tab.toTab()));
@@ -78,7 +77,7 @@ public class EditPane extends GridPane implements Initializable{
 					// TODO ??????????????
 					List<FileTree.tsFile> tabNames = new ArrayList<>();
 					for (int i = 0; i < desktop.getTabPane().getTabs().size(); i++) {
-//						tabNames.add(desktop.getTabPane().getTabs().get(i).getText());
+						tabNames.add(new FileTree.tsFile(desktop.getTabPane().getTabs().get(i).getText()));
 					}
 					int array = 0;
 					for (int i = 0; i < desktop.getTabPane().getTabs().size(); i++) {
@@ -89,9 +88,9 @@ public class EditPane extends GridPane implements Initializable{
 
 				private boolean contains(Tab tab) {
 					// TODO ??????????????
-					List<FileTree.tsFile> tabNames = new ArrayList<>();
+					List<String> tabNames = new ArrayList<>();
 					for (int i = 0; i < desktop.getTabPane().getTabs().size(); i++) {
-//						tabNames.add(desktop.getTabPane().getTabs().get(i).getText());
+						tabNames.add(desktop.getTabPane().getTabs().get(i).getText());
 					}
                     return tabNames.contains(tab.getText());
 				}

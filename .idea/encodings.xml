@@ -3,7 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lib/commons-compress-1.9.jar" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/lib/commons-io-2.4.jar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/commons-io-2.4.jar" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib/commons-lang3-3.3.2.jar" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lib/guava-17.0.jar" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/controller/ColorPicker.java" charset="UTF-8" />
@@ -20,7 +20,7 @@
     <file url="file://$PROJECT_DIR$/src/controller/WorkDesk_f.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/controller/WorkDesk_new.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/controller/resource/colorHue.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/gui/Main.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/gui/Main.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/gui/Start.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/io/JsonUtils.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/io/PackDecompiler.java" charset="UTF-8" />

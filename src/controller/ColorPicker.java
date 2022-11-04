@@ -1,16 +1,13 @@
 package controller;
 
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
-import javafx.scene.ImageCursor;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -112,7 +109,6 @@ public class ColorPicker extends GridPane{
 		cvs = false;
 		basicColorChange(null);
 		cvs = true;
-		//colorSet();
 		alphabg1.setOpacity((100-sliderA.getValue())/100.0);
 		if (alphabg1.getOpacity() < 0.5) {
 			dotLight.setVisible(true);
@@ -138,7 +134,6 @@ public class ColorPicker extends GridPane{
 	public void basicColorChange(MouseEvent e) {
 
 		double ro = colorPane.getRotate();// 度数
-		// colorPointer.setCursor(Cursor.CLOSED_HAND);
 		if (e != null) {
 			double x = e.getX();
 			double y = e.getY();
@@ -153,7 +148,6 @@ public class ColorPicker extends GridPane{
 		int r = 0;
 		int b = 0;
 		int g = 0;
-		// if (ro==180) ro=-180;
 
 		ro = -ro;// 纠正左右镜像
 		int ch = Math.abs((int) Math.pow(-1, (int) ro / 360));
@@ -208,10 +202,6 @@ public class ColorPicker extends GridPane{
 			b = (int) (-255 * ro / 60);
 		}
 		colorBottom.setFill(Color.rgb(r, g, b));
-		/*
-		ColorPlate colorPlate = new ColorPlate();
-		colorPlate.colorSet(r, g, b, sliderA.getValue());
-		*/
 		if (cvs) colorValueSet();
 	}
 
@@ -233,9 +223,6 @@ public class ColorPicker extends GridPane{
 			s = 1.0;
 		if (s <= 0)
 			s = 0.0;
-		// System.out.println("h:"+h);
-		// System.out.println("s:"+s);
-		// System.out.println("v:"+v);
 		Color color = Color.hsb(h, s, v);
 		int r = (int) (color.getRed() * 255);
 		int g = (int) (color.getGreen() * 255);
@@ -258,9 +245,6 @@ public class ColorPicker extends GridPane{
 			dotLight.setVisible(true);
 			dotDark.setVisible(false);
 		}
-		//ColorPlate colorPlate = new ColorPlate();
-		// System.out.print(g);
-		//colorPlate.colorSet(r, g, b, a);
 		if (alphabg1.getOpacity() > 0.5) {
 			dotLight.setVisible(false);
 			dotDark.setVisible(true);
@@ -358,7 +342,7 @@ public class ColorPicker extends GridPane{
 		if (!text.equals("")) {
 			try {
 				if (text.matches("\\d*")) {
-					int Value = Integer.valueOf(text).intValue();
+					int Value = Integer.parseInt(text);
 					if (Value > 255) {
 						textField.setText("255");
 					}
@@ -366,7 +350,7 @@ public class ColorPicker extends GridPane{
 				} else {
 					textField.setText("0");
 				}
-			} catch (NumberFormatException e1) {
+			} catch (NumberFormatException ignored) {
 			}
 			colorPosition();
 		}
